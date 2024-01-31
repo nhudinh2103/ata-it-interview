@@ -10,8 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.ata.interview.backend.util.FileUtil;
 import com.ata.interview.backend.util.JsonUtil;
-import com.ata.interview.domain.Employee;
-import com.ata.interview.domain.EmployeeRepository;
+import com.ata.interview.domain.JobData;
+import com.ata.interview.domain.JobDataRepository;
 
 
 @SpringBootApplication
@@ -20,9 +20,9 @@ public class Application implements CommandLineRunner  {
 	
 	Logger logger = LoggerFactory.getLogger(Application.class);
 	
-	private EmployeeRepository empRepo;
+	private final JobDataRepository empRepo;
 	
-	public Application(EmployeeRepository empRepo) {
+	public Application(JobDataRepository empRepo) {
 		this.empRepo = empRepo;
 	}
 	
@@ -43,16 +43,36 @@ public class Application implements CommandLineRunner  {
 		
 		try {
 			fileContents = FileUtil.readResource(SALARY_SURVEY_FILE_NAME_JSON);
-			Employee[] employees = JsonUtil.getObjectMapper().readValue(fileContents, Employee[].class);
-			for (Employee emp: employees) {
-				empRepo.save(emp);
+			JobData[] jobDatas = JsonUtil.getObjectMapper().readValue(fileContents, JobData[].class);
+			for (JobData jd: jobDatas) {
+				normalizeData(jd);
+				empRepo.save(jd);
 			}
 			
 			
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
+	}
+	
+	private void normalizeData(JobData jd) {
 		
+		String salaryStr = jd.getSalaryStr();
+		if (salaryStr != null) {
+			// salary can contains currency, as well as per hour
+			// We ignore it for simplicity filter with number later			
+			salaryStr = salaryStr.replaceAll("[^0-9]", "");
+			
+			// remove white space un
+			salaryStr = salaryStr.replaceAll("\\s+", "");
+			jd.setSalaryStr(salaryStr);
+		}
+		
+		Long salary = null;
+		try {
+			salary = Long.parseLong(salaryStr);
+		} catch (Exception ex) {}
+		jd.setSalary(salary);
 		
 	}
 
