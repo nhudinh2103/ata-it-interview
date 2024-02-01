@@ -1,5 +1,7 @@
 package com.ata.interview.domain;
 
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -168,6 +170,34 @@ public class JobData {
 	public void setAdditionalComments(String additionalComments) {
 		this.additionalComments = additionalComments;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(additionalComments, annualBonus, annualStockBonus, employer, gender, id, jobTitle, location,
+				salary, salaryStr, signingBonus, timestamp, yearOfExperience, yearsAtEmployer);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		JobData other = (JobData) obj;
+		return Objects.equals(additionalComments, other.additionalComments)
+				&& Objects.equals(annualBonus, other.annualBonus)
+				&& Objects.equals(annualStockBonus, other.annualStockBonus) && Objects.equals(employer, other.employer)
+				&& Objects.equals(gender, other.gender) && Objects.equals(id, other.id)
+				&& Objects.equals(jobTitle, other.jobTitle) && Objects.equals(location, other.location)
+				&& Objects.equals(salary, other.salary) && Objects.equals(salaryStr, other.salaryStr)
+				&& Objects.equals(signingBonus, other.signingBonus) && Objects.equals(timestamp, other.timestamp)
+				&& Objects.equals(yearOfExperience, other.yearOfExperience)
+				&& Objects.equals(yearsAtEmployer, other.yearsAtEmployer);
+	}
+	
+	
 	
 	
 	

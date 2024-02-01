@@ -15,18 +15,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ata.interview.backend.util.SearchOperation;
 import com.ata.interview.domain.JobData;
-import com.ata.interview.domain.JobDataReadonlyRepository;
+import com.ata.interview.domain.JobDataRepository;
 import com.ata.interview.persistence.dao.JobDataSpecificationBuilder;
 
 @RestController
 public class JobDataController {
 	
 	@Autowired
-	private JobDataReadonlyRepository repo;
+	private JobDataRepository repo;
 	
 	private static final String OPERATION_SET_EXPR = Arrays.stream(SearchOperation.SIMPLE_OPERATION_SET).collect(Collectors.joining("|"));
 	
-	private static final Pattern PATTERN = Pattern.compile("(\\w+)(" + OPERATION_SET_EXPR + ")(\\p{Punct}?)(\\w+)(\\p{Punct}?)");
+	private static final Pattern PATTERN = Pattern.compile("(\\w+)(" + OPERATION_SET_EXPR + ")([^\\w\\s]+)?(\\w+)([^\\w\\s]+)?");
 
 	@GetMapping("/job_data")
 	@ResponseBody
