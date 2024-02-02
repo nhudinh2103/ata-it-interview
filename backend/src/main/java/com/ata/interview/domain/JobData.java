@@ -14,7 +14,6 @@ import jakarta.persistence.Id;
 @Entity
 public class JobData {
 	
-//	@JsonIgnore
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -197,38 +196,38 @@ public class JobData {
 				+ ", annualStockBonus=" + annualStockBonus + ", gender=" + gender + ", male=" + additionalComments + "]";
 	}
 	
-	public static final String[] FIELDS  = new String[] { "timestamp", "employer", "location", "job_title", "years_at_employer",
-			"years_of_experience", "salary", "signing_bonus", "annual_bonus", "annual_stock_bonus", "gender",
-			"additional_comments" };
+	public static final String[] FIELDS  = new String[] { "timestamp", "employer", "location", "jobTitle", "yearsAtEmployer",
+			"yearsOfExperience", "salary", "signingBonus", "annualBonus", "annualStockBonus", "gender",
+			"additionalComments" };
 	
 	public  Map.Entry<String, Object> getEntryMapFiltered(String field) {
 		
 		Map.Entry<String, Object> entry = null;
 		
 		if ("timestamp".equalsIgnoreCase(field)) {
-			entry = Map.entry("Timestamp", timestamp);
-		} else if ("Employer".equalsIgnoreCase(field)) {
-			entry = Map.entry("Employer", employer);
-		} else if ("Location".equalsIgnoreCase(field)) {
-			entry = Map.entry("Location", location);
-		} else if ("job_title".equalsIgnoreCase(field)) {
-			entry = Map.entry("Job Title", jobTitle);
-		} else if ("years_at_employer".equalsIgnoreCase(field)) {
-			entry = Map.entry("Years at Employer", yearsAtEmployer);
-		} else if ("years_of_experience".equalsIgnoreCase(field)) {
-			entry = Map.entry("Years of Experience", yearsOfExperience);
+			entry = Map.entry("timestamp", timestamp);
+		} else if ("employer".equalsIgnoreCase(field)) {
+			entry = Map.entry("employer", employer);
+		} else if ("location".equalsIgnoreCase(field)) {
+			entry = Map.entry("location", location);
+		} else if ("jobTitle".equalsIgnoreCase(field)) {
+			entry = Map.entry("jobTitle", jobTitle);
+		} else if ("yearsAtEmployer".equalsIgnoreCase(field)) {
+			entry = Map.entry("yearsAtEmployer", yearsAtEmployer);
+		} else if ("yearsOfExperience".equalsIgnoreCase(field)) {
+			entry = Map.entry("yearsOfExperience", yearsOfExperience);
 		} else if ("salary".equalsIgnoreCase(field)) {
-			entry = Map.entry("Salary", salary);
-		} else if ("signing_bonus".equalsIgnoreCase(field)) {
-			entry = Map.entry("Signing Bonus", signingBonus);
-		} else if ("annual_bonus".equalsIgnoreCase(field)) {
-			entry = Map.entry("Annual Bonus", annualBonus);
-		} else if ("annual_stock_Bonus".equalsIgnoreCase(field)) {
-			entry = Map.entry("Annual Stock Value/Bonus", annualStockBonus);
+			entry = Map.entry("salary", salary);
+		} else if ("signingBonus".equalsIgnoreCase(field)) {
+			entry = Map.entry("signingBonus", signingBonus);
+		} else if ("annualBonus".equalsIgnoreCase(field)) {
+			entry = Map.entry("annualBonus", annualBonus);
+		} else if ("annualStockBonus".equalsIgnoreCase(field)) {
+			entry = Map.entry("annualStockBonus", annualStockBonus);
 		} else if ("gender".equalsIgnoreCase(field)) {
-			entry = Map.entry("Gender", gender);
-		} else if ("additional_comments".equalsIgnoreCase(field)) {
-			entry = Map.entry("Additional Comments", additionalComments);
+			entry = Map.entry("gender", gender);
+		} else if ("additionalComments".equalsIgnoreCase(field)) {
+			entry = Map.entry("additionalComments", additionalComments);
 		}
 		
 		return entry;

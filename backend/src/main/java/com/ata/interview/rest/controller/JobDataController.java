@@ -11,6 +11,8 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Order;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,7 +36,10 @@ public class JobDataController {
 
 	@GetMapping("/job_data")
 	@ResponseBody
-	public List<Map<String, Object>> search(@RequestParam(value="search") Optional<String> searchOpt, @RequestParam(value="fields") Optional<String> fieldsOpt) {
+	public List<Map<String, Object>> search(
+			@RequestParam(value = "search") Optional<String> searchOpt,
+			@RequestParam(value = "fields") Optional<String> fieldsOpt,
+			@RequestParam(value = "sort") Optional<String> sortOpt) {
 		
 		String search = "";
 		if (searchOpt.isPresent()) {
@@ -44,6 +49,11 @@ public class JobDataController {
 		String[] fieldArr = JobData.FIELDS;
 		if (fieldsOpt.isPresent()) {
 			fieldArr = fieldsOpt.get().split(",");
+		}
+		
+		String sort = "";
+		if (sortOpt.isPresent()) {
+			sort = sortOpt.get();
 		}
 		
 		JobDataSpecificationBuilder builder = new JobDataSpecificationBuilder();
@@ -63,7 +73,15 @@ public class JobDataController {
 		}
 		
 		Specification<JobData> spec = builder.build();
-		List<JobData> searchResults = repo.findAll(spec);
+		
+		List<JobData> searchResults = new ArrayList<>();
+		
+		List<Order> orders = getSortingOrders(sort);
+		if (orders.isEmpty()) {
+			searchResults = repo.findAll(spec);
+		} else {
+			searchResults = repo.findAll(spec, Sort.by(orders));
+		}
 		
 		List<Map<String, Object>> result = generateFieldsResultFrom(searchResults, fieldArr);
 		
@@ -90,5 +108,43 @@ public class JobDataController {
 		}
 
 		return result;
+	}
+	
+	private List<Order> getSortingOrders(String sortStr) {
+		
+		List<Order> rsList = new ArrayList<>();
+		
+		if (sortStr == null || sortStr.isBlank()) {
+			return rsList;
+		}
+		
+		// Example: salary,asc|annual_bonus,desc 
+		// => split to array with 2 items: ["salary,asc", "annual bonus,desc"]		
+		String[] sotrStrSplitted = sortStr.split("@@");
+		
+		for (String sortStrItem: sotrStrSplitted) {
+			
+			// salary,asc => split to [salary, asc]
+			String[] sortStrItemSplitted = sortStrItem.split(",");
+			
+			String sortField = sortStrItemSplitted[0];
+			String sortDirectionStr = sortStrItemSplitted[1];
+			
+			rsList.add(new Order(getSortDirection(sortDirectionStr), sortField));
+			
+		}
+		
+		return rsList;
+		
+	}
+	
+	private Sort.Direction getSortDirection(String direction) {
+		if ("asc".equalsIgnoreCase(direction)) {
+			return Sort.Direction.ASC;
+		} else if ("desc".equalsIgnoreCase(direction)) {
+			return Sort.Direction.DESC;
+		}
+
+		return Sort.Direction.ASC;
 	}
 }
