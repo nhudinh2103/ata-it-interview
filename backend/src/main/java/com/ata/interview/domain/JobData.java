@@ -214,9 +214,9 @@ public class JobData {
 		} else if ("job_title".equalsIgnoreCase(field)) {
 			entry = Map.entry("Job Title", jobTitle);
 		} else if ("years_at_employer".equalsIgnoreCase(field)) {
-			entry = Map.entry("Year at Employer", yearsAtEmployer);
+			entry = Map.entry("Years at Employer", yearsAtEmployer);
 		} else if ("years_of_experience".equalsIgnoreCase(field)) {
-			entry = Map.entry("Year of Experience", yearsOfExperience);
+			entry = Map.entry("Years of Experience", yearsOfExperience);
 		} else if ("salary".equalsIgnoreCase(field)) {
 			entry = Map.entry("Salary", salary);
 		} else if ("signing_bonus".equalsIgnoreCase(field)) {
