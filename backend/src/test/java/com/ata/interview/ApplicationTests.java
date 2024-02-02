@@ -1,14 +1,9 @@
 package com.ata.interview;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.in;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
-import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +22,6 @@ class ApplicationTests {
 	@Autowired
 	private JobDataRepository repo;
 	
-	@Autowired
-	private DummyData dummyData;
-	
 	private JobData jobData1;
 	
 	private JobData jobData2;
@@ -43,7 +35,7 @@ class ApplicationTests {
 		jobData1.setLocation("넥센");
 		jobData1.setJobTitle("꼰대");
 		jobData1.setYearsAtEmployer("18");
-		jobData1.setYearOfExperience("18");
+		jobData1.setYearsOfExperience("18");
 		jobData1.setSalaryStr("9999999999");
 		jobData1.setSalary(9999999999l);
 		jobData1.setSigningBonus("8999999");
@@ -58,7 +50,7 @@ class ApplicationTests {
 		jobData2.setLocation("");
 		jobData2.setJobTitle("Troll");
 		jobData2.setYearsAtEmployer("5");
-		jobData2.setYearOfExperience("45");
+		jobData2.setYearsOfExperience("45");
 		jobData2.setSalaryStr("10000000000000300");
 		jobData2.setSalary(10000000000000300l);
 		jobData2.setSigningBonus("");
@@ -85,7 +77,7 @@ class ApplicationTests {
 		assertEquals(jobData1.getEmployer(), results.get(0).getEmployer());
 		assertEquals(jobData1.getLocation(), results.get(0).getLocation());
 		assertEquals(jobData1.getJobTitle(), results.get(0).getJobTitle());
-		assertEquals(jobData1.getYearOfExperience(), results.get(0).getYearOfExperience());
+		assertEquals(jobData1.getYearsOfExperience(), results.get(0).getYearsOfExperience());
 		assertEquals(jobData1.getYearsAtEmployer(), results.get(0).getYearsAtEmployer());
 		assertEquals(jobData1.getSalaryStr(), results.get(0).getSalaryStr());
 		assertEquals(jobData1.getSalary(), results.get(0).getSalary());
@@ -115,7 +107,7 @@ class ApplicationTests {
 		assertEquals(jobData2.getEmployer(), results.get(0).getEmployer());
 		assertEquals(jobData2.getLocation(), results.get(0).getLocation());
 		assertEquals(jobData2.getJobTitle(), results.get(0).getJobTitle());
-		assertEquals(jobData2.getYearOfExperience(), results.get(0).getYearOfExperience());
+		assertEquals(jobData2.getYearsOfExperience(), results.get(0).getYearsOfExperience());
 		assertEquals(jobData2.getYearsAtEmployer(), results.get(0).getYearsAtEmployer());
 		assertEquals(jobData2.getSalaryStr(), results.get(0).getSalaryStr());
 		assertEquals(jobData2.getSalary(), results.get(0).getSalary());

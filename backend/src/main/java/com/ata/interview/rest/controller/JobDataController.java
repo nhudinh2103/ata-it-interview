@@ -1,7 +1,11 @@
 package com.ata.interview.rest.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -30,11 +34,20 @@ public class JobDataController {
 
 	@GetMapping("/job_data")
 	@ResponseBody
-	public List<JobData> search(@RequestParam(value="search") String search) {
+	public List<Map<String, Object>> search(@RequestParam(value="search") Optional<String> searchOpt, @RequestParam(value="fields") Optional<String> fieldsOpt) {
+		
+		String search = "";
+		if (searchOpt.isPresent()) {
+			search = searchOpt.get();
+		}
+		
+		String[] fieldArr = JobData.FIELDS;
+		if (fieldsOpt.isPresent()) {
+			fieldArr = fieldsOpt.get().split(",");
+		}
 		
 		JobDataSpecificationBuilder builder = new JobDataSpecificationBuilder();
-		
-		if (search != null) {
+		if (!search.isEmpty()) {
 			Matcher matcher = PATTERN.matcher(search);
 			while (matcher.find()) {
 				
@@ -50,7 +63,32 @@ public class JobDataController {
 		}
 		
 		Specification<JobData> spec = builder.build();
-		return repo.findAll(spec);
+		List<JobData> searchResults = repo.findAll(spec);
+		
+		List<Map<String, Object>> result = generateFieldsResultFrom(searchResults, fieldArr);
+		
+		return result;
 	}
 	
+	private List<Map<String, Object>> generateFieldsResultFrom(List<JobData> jobDatas, String[] fieldArr) {
+		
+		List<Map<String, Object>> result = new ArrayList<>();
+		
+		for (JobData jd : jobDatas) {
+			
+			Map<String, Object> m = new HashMap<>();
+
+			for (int i = 0; i < fieldArr.length; i++) {
+
+				Map.Entry<String, Object> entry = jd.getEntryMapFiltered(fieldArr[i]);
+				m.put(entry.getKey(), entry.getValue());
+
+			}
+			
+			result.add(m);
+
+		}
+
+		return result;
+	}
 }

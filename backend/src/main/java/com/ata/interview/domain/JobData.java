@@ -1,8 +1,8 @@
 package com.ata.interview.domain;
 
+import java.util.Map;
 import java.util.Objects;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Column;
@@ -35,7 +35,7 @@ public class JobData {
 	private String yearsAtEmployer;
 	
 	@JsonProperty("Years of Experience")
-	private String yearOfExperience;
+	private String yearsOfExperience;
 	
 	@JsonProperty(value = "Salary", access = JsonProperty.Access.WRITE_ONLY)
 	private String salaryStr;
@@ -58,14 +58,6 @@ public class JobData {
 	@JsonProperty("Additional Comments")
 	@Column(length = 2048)
 	private String additionalComments;
-
-	@Override
-	public String toString() {
-		return "Employee [timestamp=" + timestamp + ", employer=" + employer + ", location=" + location + ", jobTitle="
-				+ jobTitle + ", yearsAtEmployer=" + yearsAtEmployer + ", yearOfExperience=" + yearOfExperience
-				+ ", salaryStr=" + salaryStr + ", salary=" + salary + ", signingBonus=" + signingBonus + ", annualBonus=" + annualBonus
-				+ ", annualStockBonus=" + annualStockBonus + ", gender=" + gender + ", male=" + additionalComments + "]";
-	}
 
 	public String getTimestamp() {
 		return timestamp;
@@ -107,12 +99,12 @@ public class JobData {
 		this.yearsAtEmployer = yearsAtEmployer;
 	}
 
-	public String getYearOfExperience() {
-		return yearOfExperience;
+	public String getYearsOfExperience() {
+		return yearsOfExperience;
 	}
 
-	public void setYearOfExperience(String yearOfExperience) {
-		this.yearOfExperience = yearOfExperience;
+	public void setYearsOfExperience(String yearsOfExperience) {
+		this.yearsOfExperience = yearsOfExperience;
 	}
 
 	public String getSalaryStr() {
@@ -174,7 +166,7 @@ public class JobData {
 	@Override
 	public int hashCode() {
 		return Objects.hash(additionalComments, annualBonus, annualStockBonus, employer, gender, id, jobTitle, location,
-				salary, salaryStr, signingBonus, timestamp, yearOfExperience, yearsAtEmployer);
+				salary, salaryStr, signingBonus, timestamp, yearsOfExperience, yearsAtEmployer);
 	}
 
 	@Override
@@ -193,12 +185,55 @@ public class JobData {
 				&& Objects.equals(jobTitle, other.jobTitle) && Objects.equals(location, other.location)
 				&& Objects.equals(salary, other.salary) && Objects.equals(salaryStr, other.salaryStr)
 				&& Objects.equals(signingBonus, other.signingBonus) && Objects.equals(timestamp, other.timestamp)
-				&& Objects.equals(yearOfExperience, other.yearOfExperience)
+				&& Objects.equals(yearsOfExperience, other.yearsOfExperience)
 				&& Objects.equals(yearsAtEmployer, other.yearsAtEmployer);
 	}
 	
+	@Override
+	public String toString() {
+		return "Employee [timestamp=" + timestamp + ", employer=" + employer + ", location=" + location + ", jobTitle="
+				+ jobTitle + ", yearsAtEmployer=" + yearsAtEmployer + ", yearOfExperience=" + yearsOfExperience
+				+ ", salaryStr=" + salaryStr + ", salary=" + salary + ", signingBonus=" + signingBonus + ", annualBonus=" + annualBonus
+				+ ", annualStockBonus=" + annualStockBonus + ", gender=" + gender + ", male=" + additionalComments + "]";
+	}
 	
+	public static final String[] FIELDS  = new String[] { "timestamp", "employer", "location", "job_title", "years_at_employer",
+			"years_of_experience", "salary", "signing_bonus", "annual_bonus", "annual_stock_bonus", "gender",
+			"additional_comments" };
 	
+	public  Map.Entry<String, Object> getEntryMapFiltered(String field) {
+		
+		Map.Entry<String, Object> entry = null;
+		
+		if ("timestamp".equalsIgnoreCase(field)) {
+			entry = Map.entry("Timestamp", timestamp);
+		} else if ("Employer".equalsIgnoreCase(field)) {
+			entry = Map.entry("Employer", employer);
+		} else if ("Location".equalsIgnoreCase(field)) {
+			entry = Map.entry("Location", location);
+		} else if ("job_title".equalsIgnoreCase(field)) {
+			entry = Map.entry("Job Title", jobTitle);
+		} else if ("years_at_employer".equalsIgnoreCase(field)) {
+			entry = Map.entry("Year at Employer", yearsAtEmployer);
+		} else if ("years_of_experience".equalsIgnoreCase(field)) {
+			entry = Map.entry("Year of Experience", yearsOfExperience);
+		} else if ("salary".equalsIgnoreCase(field)) {
+			entry = Map.entry("Salary", salary);
+		} else if ("signing_bonus".equalsIgnoreCase(field)) {
+			entry = Map.entry("Signing Bonus", signingBonus);
+		} else if ("annual_bonus".equalsIgnoreCase(field)) {
+			entry = Map.entry("Annual Bonus", annualBonus);
+		} else if ("annual_stock_Bonus".equalsIgnoreCase(field)) {
+			entry = Map.entry("Annual Stock Value/Bonus", annualStockBonus);
+		} else if ("gender".equalsIgnoreCase(field)) {
+			entry = Map.entry("Gender", gender);
+		} else if ("additional_comments".equalsIgnoreCase(field)) {
+			entry = Map.entry("Additional Comments", additionalComments);
+		}
+		
+		return entry;
+		
+	}
 	
 	
 }
