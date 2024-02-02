@@ -1,4 +1,4 @@
-package com.ata.interview.domain;
+package com.ata.interview.persistence.model;
 
 import java.util.Map;
 import java.util.Objects;

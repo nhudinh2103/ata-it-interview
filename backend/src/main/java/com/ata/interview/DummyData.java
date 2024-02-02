@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.ata.interview.backend.util.FileUtil;
 import com.ata.interview.backend.util.JsonUtil;
-import com.ata.interview.domain.JobData;
+import com.ata.interview.persistence.model.JobData;
 
 @Component
 public class DummyData {

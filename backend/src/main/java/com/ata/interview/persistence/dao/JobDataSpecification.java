@@ -3,7 +3,7 @@ package com.ata.interview.persistence.dao;
 import org.springframework.data.jpa.domain.Specification;
 
 import com.ata.interview.backend.util.SpecSearchCriteria;
-import com.ata.interview.domain.JobData;
+import com.ata.interview.persistence.model.JobData;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;

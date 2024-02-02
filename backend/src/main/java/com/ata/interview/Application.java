@@ -8,7 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.ata.interview.constants.Constants;
-import com.ata.interview.domain.JobDataRepository;
+import com.ata.interview.persistence.dao.JobDataRepository;
 
 
 @SpringBootApplication

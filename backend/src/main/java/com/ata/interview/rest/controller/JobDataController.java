@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ata.interview.backend.util.SearchOperation;
-import com.ata.interview.domain.JobData;
-import com.ata.interview.domain.JobDataRepository;
+import com.ata.interview.persistence.dao.JobDataRepository;
 import com.ata.interview.persistence.dao.JobDataSpecificationBuilder;
+import com.ata.interview.persistence.model.JobData;
 
 @RestController
 public class JobDataController {
