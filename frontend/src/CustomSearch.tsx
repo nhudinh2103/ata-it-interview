@@ -164,15 +164,15 @@ function CustomSearch() {
             <th>Account</th>
             <th>Operation</th>
             <th>Symbol</th>
-            <th>Description</th>
-            <th>Qty</th>
-            <th>Filled Qty</th>
-            <th>Price</th>
+            <th scope="col" className="d-none d-sm-table-cell">Description</th>
+            <th scope="col" className="d-none d-sm-table-cell">Qty</th>
+            <th scope="col" className="d-none d-sm-table-cell">Filled Qty</th>
+            <th scope="col" className="d-none d-sm-table-cell">Price</th>
             <th>Status</th>
-            <th>Date</th>
-            <th>Expiration</th>
-            <th>No. Ref.</th>
-            <th>Ext. Ref.</th>
+            <th scope="col" className="d-none d-sm-table-cell">Date</th>
+            <th scope="col" className="d-none d-sm-table-cell">Expiration</th>
+            <th scope="col" className="d-none d-sm-table-cell">No. Ref.</th>
+            <th scope="col" className="d-none d-sm-table-cell">Ext. Ref.</th>
           </tr>
         </thead>
         <tbody>
@@ -182,15 +182,15 @@ function CustomSearch() {
                   <td>{item.account}</td>
                   <td>{item.operation}</td>
                   <td>{item.symbol}</td>
-                  <td>{item.description}</td>
-                  <td>{item.qty}</td>
-                  <td>{item.filledQty}</td>
-                  <td>{item.price}</td>
+                  <td scope="col" className="d-none d-sm-table-cell">{item.description}</td>
+                  <td scope="col" className="d-none d-sm-table-cell">{item.qty}</td>
+                  <td scope="col" className="d-none d-sm-table-cell">{item.filledQty}</td>
+                  <td scope="col" className="d-none d-sm-table-cell">{item.price}</td>
                   <td>{item.status}</td>
-                  <td>{item.date}</td>
-                  <td>{item.expiration}</td>
-                  <td>{item.noRef}</td>
-                  <td>{item.extRef}</td>
+                  <td scope="col" className="d-none d-sm-table-cell">{item.date}</td>
+                  <td scope="col" className="d-none d-sm-table-cell">{item.expiration}</td>
+                  <td scope="col" className="d-none d-sm-table-cell">{item.noRef}</td>
+                  <td scope="col" className="d-none d-sm-table-cell">{item.extRef}</td>
                 </tr>
               ))
             : undefined}
