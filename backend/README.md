@@ -145,11 +145,11 @@ rootUrl: http://localhost:8081
 ### Note:
 - In search query, I use | as separator for multiple search conditions
 
-  Example: **/job_data?search=<criteria1>|<criteria2>|...<criteriaN>)**
+  Example: **/job_data?search=\<criteria1\>|\<criteria2\>|...\<criteriaN\>)**
   
 - In sort query, I use @@ for multiple sort entry with each entry separate by comma
 
-  Example: **/job_data?sort=<criteria1>,<asc/desc>@@<criteria2>,<asc/desc>@@...<criteriaN>,<asc/desc>**
+  Example: **/job_data?sort=\<criteria1\>,\<asc/desc\>@@\<criteria2\>,\<asc/desc\>@@...\<criteriaN\>,\<asc/desc\>**
 
 - For detail search criteria operation, please look in enum com.ata.interview.backend.util.SearchOperation:
 
