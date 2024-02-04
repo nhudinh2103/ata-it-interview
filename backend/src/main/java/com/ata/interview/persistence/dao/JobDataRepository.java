@@ -7,6 +7,11 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import com.ata.interview.persistence.model.JobData;
 
+/**
+ * 
+ * @author dinhnn
+ *
+ */
 @RepositoryRestResource
 public interface JobDataRepository extends CrudRepository<JobData, Long>, JpaSpecificationExecutor<JobData>, PagingAndSortingRepository<JobData, Long> {
 

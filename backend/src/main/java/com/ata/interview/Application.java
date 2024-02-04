@@ -11,6 +11,11 @@ import com.ata.interview.constants.Constants;
 import com.ata.interview.persistence.dao.JobDataRepository;
 
 
+/**
+ * 
+ * @author dinhnn
+ *
+ */
 @SpringBootApplication
 public class Application implements CommandLineRunner  {
 	

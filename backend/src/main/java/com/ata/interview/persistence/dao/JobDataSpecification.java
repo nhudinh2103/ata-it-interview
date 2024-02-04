@@ -10,6 +10,11 @@ import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 
+/**
+ * 
+ * @author dinhnn
+ *
+ */
 public class JobDataSpecification implements Specification<JobData> {
 
 	private static final long serialVersionUID = -790040997781645804L;
@@ -23,7 +28,7 @@ public class JobDataSpecification implements Specification<JobData> {
 	public SpecSearchCriteria getCriteria() {
 		return criteria;
 	}
-
+	
 	@Override
 	public Predicate toPredicate(final Root<JobData> root, final CriteriaQuery<?> query,
 			final CriteriaBuilder builder) {

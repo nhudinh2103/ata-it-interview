@@ -9,6 +9,11 @@ import com.ata.interview.backend.util.SearchOperation;
 import com.ata.interview.backend.util.SpecSearchCriteria;
 import com.ata.interview.persistence.model.JobData;
 
+/**
+ * 
+ * @author dinhnn
+ *
+ */
 public class JobDataSpecificationBuilder {
 
 	private List<SpecSearchCriteria> params;
@@ -21,7 +26,17 @@ public class JobDataSpecificationBuilder {
 			final String prefix, final String suffix) {
 		return with(null, key, operation, value, prefix, suffix);
 	}
-
+	
+	/**
+	 * 
+	 * @param orPredicate
+	 * @param key
+	 * @param operation
+	 * @param value
+	 * @param prefix
+	 * @param suffix
+	 * @return
+	 */
 	public JobDataSpecificationBuilder with(final String orPredicate, final String key, final String operation,
 			Object value, final String prefix, final String suffix) {
 		SearchOperation op = SearchOperation.getSimpleOperation(operation);
@@ -44,7 +59,7 @@ public class JobDataSpecificationBuilder {
 
 		return this;
 	}
-
+	
 	public Specification<JobData> build() {
 		if (params.size() == 0)
 			return null;

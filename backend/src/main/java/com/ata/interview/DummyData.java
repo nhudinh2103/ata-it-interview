@@ -12,6 +12,12 @@ import com.ata.interview.persistence.model.JobData;
 @Component
 public class DummyData {
 	
+	/**
+	 * Init dummy data 
+	 * @param repo
+	 * @param fileName
+	 * @throws IOException
+	 */
 	public void init(CrudRepository<JobData, Long> repo, String fileName) throws IOException {
 		
 		String fileContents = "";
@@ -30,6 +36,10 @@ public class DummyData {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param jd
+	 */
 	private void normalizeData(JobData jd) {
 		
 		String salaryStr = jd.getSalaryStr();

@@ -8,14 +8,29 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+/**
+ * 
+ * @author dinhnn
+ *
+ */
 @Configuration
 public class SecurityConfig {
-
+	
+	/**
+	 * 
+	 * @return
+	 */
 	@Bean
 	public WebSecurityCustomizer webSecurityCustomizer() {
 		return (web) -> web.ignoring().requestMatchers(new AntPathRequestMatcher("/h2-console/**"));
 	}
 	
+	/**
+	 * 
+	 * @param http
+	 * @return
+	 * @throws Exception
+	 */
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		

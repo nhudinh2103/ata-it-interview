@@ -1,5 +1,10 @@
 package com.ata.interview.backend.util;
 
+/**
+ * 
+ * @author dinhnn
+ *
+ */
 public class SpecSearchCriteria {
 
     private String key;

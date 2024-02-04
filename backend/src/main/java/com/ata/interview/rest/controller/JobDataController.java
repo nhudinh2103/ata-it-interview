@@ -20,10 +20,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ata.interview.backend.util.SearchOperation;
+import com.ata.interview.constants.Constants;
 import com.ata.interview.persistence.dao.JobDataRepository;
 import com.ata.interview.persistence.dao.JobDataSpecificationBuilder;
 import com.ata.interview.persistence.model.JobData;
 
+/**
+ * 
+ * @author dinhnn
+ *
+ */
 @RestController
 public class JobDataController {
 	
@@ -33,7 +39,17 @@ public class JobDataController {
 	private static final String OPERATION_SET_EXPR = Arrays.stream(SearchOperation.SIMPLE_OPERATION_SET).collect(Collectors.joining("|"));
 	
 	private static final Pattern PATTERN = Pattern.compile("(\\w+)(" + OPERATION_SET_EXPR + ")([^\\w\\s]+)?(\\w+)([^\\w\\s]+)?");
-
+	
+	/**
+	 * GET method for get job_data with support for
+	 *  - Filter by multiple conditions
+	 *  - Select sparse fields / attributes
+	 *  - Sorting (ascending, descending)
+	 * @param searchOpt
+	 * @param fieldsOpt
+	 * @param sortOpt
+	 * @return list of result job data
+	 */
 	@GetMapping("/job_data")
 	@ResponseBody
 	public List<Map<String, Object>> search(
@@ -48,7 +64,7 @@ public class JobDataController {
 		
 		String[] fieldArr = JobData.FIELDS;
 		if (fieldsOpt.isPresent()) {
-			fieldArr = fieldsOpt.get().split(",");
+			fieldArr = fieldsOpt.get().split(Constants.FIELD_SEPARATOR);
 		}
 		
 		String sort = "";
@@ -88,6 +104,12 @@ public class JobDataController {
 		return result;
 	}
 	
+	/**
+	 * This method use to generate results sparse fields / attributes based on search, sort job data list
+	 * @param jobDatas
+	 * @param fieldArr
+	 * @return list of entry with sparse fields / attributes
+	 */
 	private List<Map<String, Object>> generateFieldsResultFrom(List<JobData> jobDatas, String[] fieldArr) {
 		
 		List<Map<String, Object>> result = new ArrayList<>();
@@ -110,6 +132,11 @@ public class JobDataController {
 		return result;
 	}
 	
+	/**
+	 * Get sort order list based on string parse from url
+	 * @param sortStr
+	 * @return list of sort order
+	 */
 	private List<Order> getSortingOrders(String sortStr) {
 		
 		List<Order> rsList = new ArrayList<>();
@@ -120,12 +147,12 @@ public class JobDataController {
 		
 		// Example: salary,asc|annual_bonus,desc 
 		// => split to array with 2 items: ["salary,asc", "annual bonus,desc"]		
-		String[] sotrStrSplitted = sortStr.split("@@");
+		String[] sotrStrSplitted = sortStr.split(Constants.SORT_ITEM_SEPARATOR);
 		
 		for (String sortStrItem: sotrStrSplitted) {
 			
 			// salary,asc => split to [salary, asc]
-			String[] sortStrItemSplitted = sortStrItem.split(",");
+			String[] sortStrItemSplitted = sortStrItem.split(Constants.SORT_ITEM_WITH_DIRECTION_SEPARATOR);
 			
 			String sortField = sortStrItemSplitted[0];
 			String sortDirectionStr = sortStrItemSplitted[1];
@@ -138,6 +165,11 @@ public class JobDataController {
 		
 	}
 	
+	/**
+	 * Get sort direction enumeration based on string
+	 * @param direction
+	 * @return enum Sort.Direction
+	 */
 	private Sort.Direction getSortDirection(String direction) {
 		if ("asc".equalsIgnoreCase(direction)) {
 			return Sort.Direction.ASC;

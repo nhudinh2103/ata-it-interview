@@ -23,7 +23,13 @@ public class FileUtil {
 	private FileUtil() {}
 	
 	private static final Logger logger = LoggerFactory.getLogger(FileUtil.class);
-
+	
+	/**
+	 * 
+	 * @param fileName
+	 * @return
+	 * @throws IOException
+	 */
 	public static String readResource(String fileName) throws IOException {
 
 		try (InputStream is = getResourceAsInputStream(fileName);
@@ -42,7 +48,13 @@ public class FileUtil {
 			throw new IOException(ex.getMessage(), ex);
 		}
 	}
-
+	
+	/**
+	 * 
+	 * @param fileName
+	 * @return
+	 * @throws FileNotFoundException
+	 */
 	public static InputStream getResourceAsInputStream(String fileName) throws FileNotFoundException {
 
 		try {

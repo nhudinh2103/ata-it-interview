@@ -11,6 +11,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+/**
+ * 
+ * @author dinhnn
+ *
+ */
 @Entity
 public class JobData {
 	
@@ -200,6 +205,11 @@ public class JobData {
 			"yearsOfExperience", "salary", "signingBonus", "annualBonus", "annualStockBonus", "gender",
 			"additionalComments" };
 	
+	/**
+	 * 
+	 * @param field
+	 * @return
+	 */
 	public  Map.Entry<String, Object> getEntryMapFiltered(String field) {
 		
 		Map.Entry<String, Object> entry = null;
