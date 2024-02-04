@@ -94,8 +94,15 @@ To get a local copy up and running follow these simple example steps.
   You can change default port in application in **src/main/resources/application.properties** to another port and rebuild application.
   ![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/871f62e6-798b-4d69-80dd-1ff00a471051)
 
-  
+## Project structure
 
+- src/main/java: Java source code for backend.
+
+- src/main/resources: Configs file (like application.properties) and file contains dummy data.
+  
+- src/test/java: Test code (For simplicity, I just write two simple test cases).
+
+![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/843a84ad-4c6a-49bc-af13-287ce05b106d)
 
 
 <!-- USAGE EXAMPLES -->
