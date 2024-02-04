@@ -34,8 +34,8 @@ class ApplicationTests {
 		jobData1.setEmployer("과장");
 		jobData1.setLocation("넥센");
 		jobData1.setJobTitle("꼰대");
-		jobData1.setYearsAtEmployer("18");
-		jobData1.setYearsOfExperience("18");
+		jobData1.setYearsAtEmployerStr("18");
+		jobData1.setYearsOfExperienceStr("18");
 		jobData1.setSalaryStr("9999999999");
 		jobData1.setSalary(9999999999l);
 		jobData1.setSigningBonus("8999999");
@@ -49,8 +49,8 @@ class ApplicationTests {
 		jobData2.setEmployer("Reddit");
 		jobData2.setLocation("");
 		jobData2.setJobTitle("Troll");
-		jobData2.setYearsAtEmployer("5");
-		jobData2.setYearsOfExperience("45");
+		jobData2.setYearsAtEmployerStr("5");
+		jobData2.setYearsOfExperienceStr("45");
 		jobData2.setSalaryStr("10000000000000300");
 		jobData2.setSalary(10000000000000300l);
 		jobData2.setSigningBonus("");
@@ -77,8 +77,8 @@ class ApplicationTests {
 		assertEquals(jobData1.getEmployer(), results.get(0).getEmployer());
 		assertEquals(jobData1.getLocation(), results.get(0).getLocation());
 		assertEquals(jobData1.getJobTitle(), results.get(0).getJobTitle());
-		assertEquals(jobData1.getYearsOfExperience(), results.get(0).getYearsOfExperience());
-		assertEquals(jobData1.getYearsAtEmployer(), results.get(0).getYearsAtEmployer());
+		assertEquals(jobData1.getYearsOfExperienceStr(), results.get(0).getYearsOfExperienceStr());
+		assertEquals(jobData1.getYearsAtEmployerStr(), results.get(0).getYearsAtEmployerStr());
 		assertEquals(jobData1.getSalaryStr(), results.get(0).getSalaryStr());
 		assertEquals(jobData1.getSalary(), results.get(0).getSalary());
 		assertEquals(jobData1.getSigningBonus(), results.get(0).getSigningBonus());
@@ -107,8 +107,8 @@ class ApplicationTests {
 		assertEquals(jobData2.getEmployer(), results.get(0).getEmployer());
 		assertEquals(jobData2.getLocation(), results.get(0).getLocation());
 		assertEquals(jobData2.getJobTitle(), results.get(0).getJobTitle());
-		assertEquals(jobData2.getYearsOfExperience(), results.get(0).getYearsOfExperience());
-		assertEquals(jobData2.getYearsAtEmployer(), results.get(0).getYearsAtEmployer());
+		assertEquals(jobData2.getYearsOfExperienceStr(), results.get(0).getYearsOfExperienceStr());
+		assertEquals(jobData2.getYearsAtEmployerStr(), results.get(0).getYearsAtEmployerStr());
 		assertEquals(jobData2.getSalaryStr(), results.get(0).getSalaryStr());
 		assertEquals(jobData2.getSalary(), results.get(0).getSalary());
 		assertEquals(jobData2.getSigningBonus(), results.get(0).getSigningBonus());

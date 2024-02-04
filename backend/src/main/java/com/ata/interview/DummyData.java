@@ -9,6 +9,11 @@ import com.ata.interview.backend.util.FileUtil;
 import com.ata.interview.backend.util.JsonUtil;
 import com.ata.interview.persistence.model.JobData;
 
+/**
+ * 
+ * @author dinhnn
+ *
+ */
 @Component
 public class DummyData {
 	
@@ -58,6 +63,37 @@ public class DummyData {
 			salary = Long.parseLong(salaryStr);
 		} catch (Exception ex) {}
 		jd.setSalary(salary);
+		
+		String yearsOfExperienceStr = jd.getYearsOfExperienceStr();
+		if (yearsOfExperienceStr != null) {
+			
+			yearsOfExperienceStr = yearsOfExperienceStr.replaceAll("[^0-9]", "");
+			
+			yearsOfExperienceStr = yearsOfExperienceStr.replaceAll("\\s+", "");
+			jd.setYearsOfExperienceStr(yearsOfExperienceStr);
+		}
+		
+		Long yearsOfExperience = null;
+		try {
+			yearsOfExperience = Long.parseLong(yearsOfExperienceStr);
+		} catch (Exception ex) {}
+		jd.setYearsOfExperience(yearsOfExperience);
+		
+		
+		String yearsAtEmployerStr = jd.getYearsAtEmployerStr();
+		if (yearsAtEmployerStr != null) {
+			
+			yearsAtEmployerStr = yearsAtEmployerStr.replaceAll("[^0-9]", "");
+			
+			yearsAtEmployerStr = yearsAtEmployerStr.replaceAll("\\s+", "");
+			jd.setYearsAtEmployerStr(yearsAtEmployerStr);
+		}
+		
+		Long yearsAtEmployer = null;
+		try {
+			yearsAtEmployer = Long.parseLong(yearsAtEmployerStr);
+		} catch (Exception ex) {}
+		jd.setYearsAtEmployer(yearsAtEmployer);
 		
 	}
 	

@@ -1,5 +1,6 @@
 package com.ata.interview.persistence.model;
 
+import java.util.AbstractMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -35,11 +36,17 @@ public class JobData {
 	@JsonProperty("Job Title")
 	private String jobTitle;
 	
-	@JsonProperty("Years at Employer")
-	private String yearsAtEmployer;
+	@JsonProperty(value = "Years at Employer", access = JsonProperty.Access.WRITE_ONLY)
+	private String yearsAtEmployerStr;
 	
-	@JsonProperty("Years of Experience")
-	private String yearsOfExperience;
+	@JsonProperty(value = "Years at Employer", access = JsonProperty.Access.READ_ONLY)
+	private Long yearsAtEmployer;
+	
+	@JsonProperty(value = "Years of Experience", access = JsonProperty.Access.WRITE_ONLY)
+	private String yearsOfExperienceStr;
+	
+	@JsonProperty(value = "Years of Experience", access = JsonProperty.Access.READ_ONLY)
+	private Long yearsOfExperience;
 	
 	@JsonProperty(value = "Salary", access = JsonProperty.Access.WRITE_ONLY)
 	private String salaryStr;
@@ -95,19 +102,35 @@ public class JobData {
 		this.jobTitle = jobTitle;
 	}
 
-	public String getYearsAtEmployer() {
+	public String getYearsAtEmployerStr() {
+		return yearsAtEmployerStr;
+	}
+
+	public void setYearsAtEmployerStr(String yearsAtEmployerStr) {
+		this.yearsAtEmployerStr = yearsAtEmployerStr;
+	}
+	
+	public Long getYearsAtEmployer() {
 		return yearsAtEmployer;
 	}
 
-	public void setYearsAtEmployer(String yearsAtEmployer) {
+	public void setYearsAtEmployer(Long yearsAtEmployer) {
 		this.yearsAtEmployer = yearsAtEmployer;
 	}
 
-	public String getYearsOfExperience() {
+	public String getYearsOfExperienceStr() {
+		return yearsOfExperienceStr;
+	}
+
+	public void setYearsOfExperienceStr(String yearsOfExperienceStr) {
+		this.yearsOfExperienceStr = yearsOfExperienceStr;
+	}
+
+	public Long getYearsOfExperience() {
 		return yearsOfExperience;
 	}
 
-	public void setYearsOfExperience(String yearsOfExperience) {
+	public void setYearsOfExperience(Long yearsOfExperience) {
 		this.yearsOfExperience = yearsOfExperience;
 	}
 
@@ -170,9 +193,10 @@ public class JobData {
 	@Override
 	public int hashCode() {
 		return Objects.hash(additionalComments, annualBonus, annualStockBonus, employer, gender, id, jobTitle, location,
-				salary, salaryStr, signingBonus, timestamp, yearsOfExperience, yearsAtEmployer);
+				salary, salaryStr, signingBonus, timestamp, yearsAtEmployer, yearsAtEmployerStr, yearsOfExperience,
+				yearsOfExperienceStr);
 	}
-
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -189,18 +213,12 @@ public class JobData {
 				&& Objects.equals(jobTitle, other.jobTitle) && Objects.equals(location, other.location)
 				&& Objects.equals(salary, other.salary) && Objects.equals(salaryStr, other.salaryStr)
 				&& Objects.equals(signingBonus, other.signingBonus) && Objects.equals(timestamp, other.timestamp)
+				&& Objects.equals(yearsAtEmployer, other.yearsAtEmployer)
+				&& Objects.equals(yearsAtEmployerStr, other.yearsAtEmployerStr)
 				&& Objects.equals(yearsOfExperience, other.yearsOfExperience)
-				&& Objects.equals(yearsAtEmployer, other.yearsAtEmployer);
+				&& Objects.equals(yearsOfExperienceStr, other.yearsOfExperienceStr);
 	}
-	
-	@Override
-	public String toString() {
-		return "Employee [timestamp=" + timestamp + ", employer=" + employer + ", location=" + location + ", jobTitle="
-				+ jobTitle + ", yearsAtEmployer=" + yearsAtEmployer + ", yearOfExperience=" + yearsOfExperience
-				+ ", salaryStr=" + salaryStr + ", salary=" + salary + ", signingBonus=" + signingBonus + ", annualBonus=" + annualBonus
-				+ ", annualStockBonus=" + annualStockBonus + ", gender=" + gender + ", male=" + additionalComments + "]";
-	}
-	
+
 	public static final String[] FIELDS  = new String[] { "timestamp", "employer", "location", "jobTitle", "yearsAtEmployer",
 			"yearsOfExperience", "salary", "signingBonus", "annualBonus", "annualStockBonus", "gender",
 			"additionalComments" };
@@ -215,29 +233,29 @@ public class JobData {
 		Map.Entry<String, Object> entry = null;
 		
 		if ("timestamp".equalsIgnoreCase(field)) {
-			entry = Map.entry("timestamp", timestamp);
+			entry = new AbstractMap.SimpleEntry<>("timestamp", timestamp);
 		} else if ("employer".equalsIgnoreCase(field)) {
-			entry = Map.entry("employer", employer);
+			entry = new AbstractMap.SimpleEntry<>("employer", employer);
 		} else if ("location".equalsIgnoreCase(field)) {
-			entry = Map.entry("location", location);
+			entry = new AbstractMap.SimpleEntry<>("location", location);
 		} else if ("jobTitle".equalsIgnoreCase(field)) {
-			entry = Map.entry("jobTitle", jobTitle);
+			entry = new AbstractMap.SimpleEntry<>("jobTitle", jobTitle);
 		} else if ("yearsAtEmployer".equalsIgnoreCase(field)) {
-			entry = Map.entry("yearsAtEmployer", yearsAtEmployer);
+			entry = new AbstractMap.SimpleEntry<>("yearsAtEmployer", yearsAtEmployer);
 		} else if ("yearsOfExperience".equalsIgnoreCase(field)) {
-			entry = Map.entry("yearsOfExperience", yearsOfExperience);
+			entry = new AbstractMap.SimpleEntry<>("yearsOfExperience", yearsOfExperience);
 		} else if ("salary".equalsIgnoreCase(field)) {
-			entry = Map.entry("salary", salary);
+			entry = new AbstractMap.SimpleEntry<>("salary", salary);
 		} else if ("signingBonus".equalsIgnoreCase(field)) {
-			entry = Map.entry("signingBonus", signingBonus);
+			entry = new AbstractMap.SimpleEntry<>("signingBonus", signingBonus);
 		} else if ("annualBonus".equalsIgnoreCase(field)) {
-			entry = Map.entry("annualBonus", annualBonus);
+			entry = new AbstractMap.SimpleEntry<>("annualBonus", annualBonus);
 		} else if ("annualStockBonus".equalsIgnoreCase(field)) {
-			entry = Map.entry("annualStockBonus", annualStockBonus);
+			entry = new AbstractMap.SimpleEntry<>("annualStockBonus", annualStockBonus);
 		} else if ("gender".equalsIgnoreCase(field)) {
-			entry = Map.entry("gender", gender);
+			entry = new AbstractMap.SimpleEntry<>("gender", gender);
 		} else if ("additionalComments".equalsIgnoreCase(field)) {
-			entry = Map.entry("additionalComments", additionalComments);
+			entry = new AbstractMap.SimpleEntry<>("additionalComments", additionalComments);
 		}
 		
 		return entry;
