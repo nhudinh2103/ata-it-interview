@@ -114,33 +114,47 @@ rootUrl: http://localhost:8081
 
    http://localhost:8081/job_data?search=salary>=1000000000000
 
-![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/e6f32e1f-a738-41a2-b7e6-239078fccf51)
+[image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/605ee7a5-67a7-4526-961e-69183db1b3a6)
 
 2. Get jobs which salary greater or equal than X value with gender is Female.
 
    http://localhost:8081/job_data?search=salary>=9999999999|gender:Female
 
-![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/9d8a9e1a-0da2-4ed4-89bc-d45772a9cbc4)
+![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/3f2969a6-3638-44df-90a1-cad9f567cbac)
 
 3. Only retrieve 4 fields: gender, salary, employer, timestamp with search conditions
 
    http://localhost:8081/job_data?search=salary>=1000000000000&fields=gender,salary,timestamp,employer
 
-![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/d0af53c0-cf35-40ad-a939-ef2e8f1f1489)
+![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/446ca878-f193-4868-b881-8c710566aaa9)
 
 4. Sort by salary desc
 
    http://localhost:8081/job_data?search=salary>=1000000000000&fields=gender,salary,timestamp,employer&sort=salary,desc
 
-![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/1105d8e0-e79a-4d0f-a84c-d95b02205c6e)
+![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/60a41245-5233-4a9b-8c00-ace51e24c499)
 
 5. Sort by multiple criteria: sort gender asc, than sort salary desc
 
    http://localhost:8081/job_data?search=salary:1000000&fields=gender,salary,timestamp,employer&sort=gender,asc@@timestamp,desc
    
-![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/2dbc26da-fcc0-47e9-a390-f9169f10b6bd)
+![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/fcc2669d-8577-45e4-9d83-ad926ccd62e0)
+
+6. Sort by yearsOfExperience asc
+
+   http://localhost:8081/job_data?search=salary>=9999999999|gender:Male&sort=yearsOfExperience,asc
+
+![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/687a4855-4671-4c67-9f69-2f6dddb6e3da)
+
+7. Sort by yearsAtEmployer asc
+
+   http://localhost:8081/job_data?search=salary>=9999999999|gender:Male&sort=yearsAtEmployer,asc
+
+![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/2a612418-f840-4c0a-ad00-090c56798e42)
 
 ### Note:
+- Currently my implementation only handle issues when sort with string at these fields: salary, yearAtEmployer, yearsOfExperience.
+
 - In search query, I use | as separator for multiple search conditions
 
   Example: **/job_data?search=\<criteria1\>|\<criteria2\>|...\<criteriaN\>)**
