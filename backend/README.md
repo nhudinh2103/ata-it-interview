@@ -46,8 +46,6 @@ A few quick notes on submitting the Backend Exercise
 - Don't worry about any web application concerns other than serializing JSON and returning via a GET request.
 - Feel free to design the URL structure and JSON schema that you believe creates the best client/consumer experience. We want to see how you initiate a new project, project structure and design.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -99,18 +97,56 @@ To get a local copy up and running follow these simple example steps.
   
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+After running backend application successfully, you can call Rest API from PostMan.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+rootUrl: http://localhost:8081
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+1. Get jobs which salary greater or equal than X value
+
+   http://localhost:8081/job_data?search=salary>=1000000000000
+
+![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/e6f32e1f-a738-41a2-b7e6-239078fccf51)
+
+2. Get jobs which salary greater or equal than X value with gender is Female.
+
+   http://localhost:8081/job_data?search=salary>=9999999999|gender:Female
+
+![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/9d8a9e1a-0da2-4ed4-89bc-d45772a9cbc4)
+
+3. Only retrieve 4 fields: gender, salary, employer, timestamp with search conditions
+
+   http://localhost:8081/job_data?search=salary>=1000000000000&fields=gender,salary,timestamp,employer
+
+![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/d0af53c0-cf35-40ad-a939-ef2e8f1f1489)
+
+4. Sort by salary desc
+
+   http://localhost:8081/job_data?search=salary>=1000000000000&fields=gender,salary,timestamp,employer&sort=salary,desc
+
+![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/1105d8e0-e79a-4d0f-a84c-d95b02205c6e)
+
+5. Sort by multiple criteria: sort gender asc, than sort salary desc
+
+   http://localhost:8081/job_data?search=salary:1000000&fields=gender,salary,timestamp,employer&sort=gender,asc@@timestamp,desc
+   
+![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/2dbc26da-fcc0-47e9-a390-f9169f10b6bd)
+
+### Note:
+- In search query, I use | as separator for multiple search conditions
+
+  Example: **/job_data?search=<criteria1>|<criteria2>|...<criteriaN>)**
+  
+- In sort query, I use @@ for multiple sort entry with each entry separate by comma
+
+  Example: **/job_data?sort=<criteria1>,<asc/desc>@@<criteria2>,<asc/desc>@@...<criteriaN>,<asc/desc>**
+
+- For detail search criteria operation, please look in enum com.ata.interview.backend.util.SearchOperation:
+
+  ![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/c6f55019-6846-4d62-a717-0e4f41436458)
 
 
 <!-- CONTACT -->
@@ -119,6 +155,4 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 Dinh Nguyen - [@My Linkedin](https://www.linkedin.com/in/dinh-nguyen-398529115/) - nhudinh2103@gmail.com
 
 Project Link: [https://github.com/nhudinh2103/ata-it-interview/backend]([https://github.com/your_username/repo_name](https://github.com/nhudinh2103/ata-it-interview/backend))
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
