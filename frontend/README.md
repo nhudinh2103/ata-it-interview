@@ -44,6 +44,8 @@ To get a local copy up and running follow these simple example steps.
 
 - Install node and npm (Follow this link if you use ubuntu)
 
+https://www.hostinger.com/tutorials/how-to-install-node-ubuntu
+
 ![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/84d5a1c9-1cef-4a7f-88f2-51247839197a)
 
 - Install vscode (as we use it as IDE for code)
