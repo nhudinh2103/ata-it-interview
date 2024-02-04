@@ -153,6 +153,7 @@ function CustomSearch() {
           <tr>
             <td>
               <Input
+                style={{marginTop: '6px'}}
                 className="form-control"
                 type="text"
                 placeholder="Enter account no..."
@@ -160,14 +161,12 @@ function CustomSearch() {
               ></Input>
             </td>
             <td>
-              <Select defaultValue="transmission">
+              <Select className="d-none d-sm-table-cell" style={{verticalAlign: 'center', marginLeft: '60px', alignItems: 'center'}} defaultValue="transmission">
                 <option value="transmission">Transmission</option>
-                {/* <MenuItem value='transmission'>Transmission</MenuItem> */}
               </Select>
 
-              <Select defaultValue="waiting">
+              <Select className="d-none d-sm-table-cell" style={{marginLeft: '70px', alignItems: 'center'}} defaultValue="waiting">
                 <option value="waiting">Waiting</option>
-                {/* <MenuItem value='transmission'>Transmission</MenuItem> */}
               </Select>
 
             </td>
@@ -191,8 +190,8 @@ function CustomSearch() {
                 format="DD/MM/YYYY"
               />
             </td>
-            <td>
-              <Button className="btn btn-primary" onClick={handleSearch}>
+            <td style={{verticalAlign: 'center', alignSelf: 'center'}}>
+              <Button style={{width: "100%", height: "100%", marginTop: '8px'}} className="btn btn-primary" onClick={handleSearch}>
                 Search
               </Button>
             </td>
