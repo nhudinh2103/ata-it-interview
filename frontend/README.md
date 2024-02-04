@@ -73,6 +73,15 @@ To get a local copy up and running follow these simple example steps.
 
   ![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/9df1dcda-5dcc-4d90-a2c5-50fd86965022)
 
+- In case you want to run the test, pleae run these command:
+
+  ```
+  npm test
+  ```
+
+  ![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/15736342-1c9d-4dab-85fe-165b889a302d)
+
+
 ## Project structure
 
 - src: Typescript code for this frontend ReactJS app.
