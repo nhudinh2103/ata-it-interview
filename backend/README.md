@@ -114,43 +114,44 @@ rootUrl: http://localhost:8081
 
    http://localhost:8081/job_data?search=salary>=1000000000000
 
-[image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/605ee7a5-67a7-4526-961e-69183db1b3a6)
+![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/12731dd7-df44-4ef6-b185-bea97a18356f)
+
 
 2. Get jobs which salary greater or equal than X value with gender is Female.
 
    http://localhost:8081/job_data?search=salary>=9999999999|gender:Female
 
-![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/3f2969a6-3638-44df-90a1-cad9f567cbac)
+![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/8e649581-e945-4c0a-977d-305522826fd8)
 
 3. Only retrieve 4 fields: gender, salary, employer, timestamp with search conditions
 
-   http://localhost:8081/job_data?search=salary>=1000000000000&fields=gender,salary,timestamp,employer
+   http://localhost:8081/job_data?search=salary>=1000000000000&fields=gender,salary,timestamp,timestampStr,employer
 
-![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/446ca878-f193-4868-b881-8c710566aaa9)
+![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/d0b5c0fb-9519-458f-ae3b-3f107aed2e50)
 
 4. Sort by salary desc
 
-   http://localhost:8081/job_data?search=salary>=1000000000000&fields=gender,salary,timestamp,employer&sort=salary,desc
+   http://localhost:8081/job_data?search=salary>=1000000000000&fields=gender,salary,timestamp,timestampStr,employer&sort=salary,desc
 
-![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/60a41245-5233-4a9b-8c00-ace51e24c499)
+![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/db3cb6a7-ebb4-49d8-8c16-a1df84807142)
 
 5. Sort by multiple criteria: sort gender asc, than sort salary desc
 
-   http://localhost:8081/job_data?search=salary:1000000&fields=gender,salary,timestamp,employer&sort=gender,asc@@timestamp,desc
+   http://localhost:8081/job_data?search=salary:1000000&fields=gender,salary,timestamp,timestampStr,employer&sort=gender,asc@@timestamp,desc
    
-![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/fcc2669d-8577-45e4-9d83-ad926ccd62e0)
+![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/df2e32ce-da4d-4e5e-aa39-5fe2b3275ca0)
 
 6. Sort by yearsOfExperience asc
 
    http://localhost:8081/job_data?search=salary>=9999999999|gender:Male&sort=yearsOfExperience,asc
 
-![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/687a4855-4671-4c67-9f69-2f6dddb6e3da)
+![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/c2a17559-6e4d-4195-9b67-842b9cbf3e20)
 
 7. Sort by yearsAtEmployer asc
 
    http://localhost:8081/job_data?search=salary>=9999999999|gender:Male&sort=yearsAtEmployer,asc
 
-![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/2a612418-f840-4c0a-ad00-090c56798e42)
+![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/409cedb4-75bd-4fe3-b4d6-77b4b58c00d9)
 
 ### Note:
 - Currently my implementation only handle issues when sort with string at these fields: salary, yearAtEmployer, yearsOfExperience.
