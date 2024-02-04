@@ -24,8 +24,11 @@ public class JobData {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@JsonProperty("Timestamp")
-	private String timestamp;
+	@JsonProperty(value = "Timestamp", access = JsonProperty.Access.WRITE_ONLY)
+	private String timestampStr;
+	
+	@JsonProperty(value = "Timestamp", access = JsonProperty.Access.READ_ONLY)
+	private Long timestamp;
 	
 	@JsonProperty("Employer")
 	private String employer;
@@ -70,11 +73,19 @@ public class JobData {
 	@Column(length = 2048)
 	private String additionalComments;
 
-	public String getTimestamp() {
+	public String getTimestampStr() {
+		return timestampStr;
+	}
+
+	public void setTimestampStr(String timestampStr) {
+		this.timestampStr = timestampStr;
+	}
+	
+	public Long getTimestamp() {
 		return timestamp;
 	}
 
-	public void setTimestamp(String timestamp) {
+	public void setTimestamp(Long timestamp) {
 		this.timestamp = timestamp;
 	}
 
@@ -219,7 +230,7 @@ public class JobData {
 				&& Objects.equals(yearsOfExperienceStr, other.yearsOfExperienceStr);
 	}
 
-	public static final String[] FIELDS  = new String[] { "timestamp", "employer", "location", "jobTitle", "yearsAtEmployer",
+	public static final String[] FIELDS  = new String[] { "timestamp", "timestampStr", "employer", "location", "jobTitle", "yearsAtEmployer",
 			"yearsOfExperience", "salary", "signingBonus", "annualBonus", "annualStockBonus", "gender",
 			"additionalComments" };
 	
@@ -234,6 +245,8 @@ public class JobData {
 		
 		if ("timestamp".equalsIgnoreCase(field)) {
 			entry = new AbstractMap.SimpleEntry<>("timestamp", timestamp);
+		} else if ("timestampStr".equalsIgnoreCase(field)) {
+			entry = new AbstractMap.SimpleEntry<>("timestampStr", timestampStr);
 		} else if ("employer".equalsIgnoreCase(field)) {
 			entry = new AbstractMap.SimpleEntry<>("employer", employer);
 		} else if ("location".equalsIgnoreCase(field)) {

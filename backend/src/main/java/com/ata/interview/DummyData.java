@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.ata.interview.backend.util.FileUtil;
 import com.ata.interview.backend.util.JsonUtil;
+import com.ata.interview.constants.Constants;
 import com.ata.interview.persistence.model.JobData;
 
 /**
@@ -94,6 +95,15 @@ public class DummyData {
 			yearsAtEmployer = Long.parseLong(yearsAtEmployerStr);
 		} catch (Exception ex) {}
 		jd.setYearsAtEmployer(yearsAtEmployer);
+		
+		Long timestamp = null;
+		try {
+			timestamp = Constants.FMT_MMDDYYYY_PATTERN.parseDateTime(jd.getTimestampStr()).getMillis();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		jd.setTimestamp(timestamp);
+		
 		
 	}
 	

@@ -30,7 +30,7 @@ class ApplicationTests {
 	public void init() {
 		
 		jobData1 = new JobData();
-		jobData1.setTimestamp("3/23/2016 6:07:06");
+		jobData1.setTimestampStr("3/23/2016 6:07:06");
 		jobData1.setEmployer("과장");
 		jobData1.setLocation("넥센");
 		jobData1.setJobTitle("꼰대");
@@ -45,7 +45,7 @@ class ApplicationTests {
 		jobData1.setAdditionalComments("");
 		
 		jobData2 = new JobData();
-		jobData2.setTimestamp("3/21/2016 13:41:50");
+		jobData2.setTimestampStr("3/21/2016 13:41:50");
 		jobData2.setEmployer("Reddit");
 		jobData2.setLocation("");
 		jobData2.setJobTitle("Troll");
@@ -73,7 +73,7 @@ class ApplicationTests {
 		List<JobData> results = repo.findAll(Specification.where(spec1).and(spec2));
 		
 		assertEquals(results.size(), 1);
-		assertEquals(jobData1.getTimestamp(), results.get(0).getTimestamp());
+		assertEquals(jobData1.getTimestampStr(), results.get(0).getTimestampStr());
 		assertEquals(jobData1.getEmployer(), results.get(0).getEmployer());
 		assertEquals(jobData1.getLocation(), results.get(0).getLocation());
 		assertEquals(jobData1.getJobTitle(), results.get(0).getJobTitle());
@@ -103,7 +103,7 @@ class ApplicationTests {
 		List<JobData> results = repo.findAll(Specification.where(spec1).and(spec2));
 		
 		assertEquals(results.size(), 1);
-		assertEquals(jobData2.getTimestamp(), results.get(0).getTimestamp());
+		assertEquals(jobData2.getTimestampStr(), results.get(0).getTimestampStr());
 		assertEquals(jobData2.getEmployer(), results.get(0).getEmployer());
 		assertEquals(jobData2.getLocation(), results.get(0).getLocation());
 		assertEquals(jobData2.getJobTitle(), results.get(0).getJobTitle());
