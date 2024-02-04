@@ -153,6 +153,13 @@ rootUrl: http://localhost:8081
 
   ![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/c6f55019-6846-4d62-a717-0e4f41436458)
 
+- This backend app use h2 db as an memory database (for store dummy data). In case you want to access, please use user and password in application.properties file.
+
+  http://localhost:8081/h2-console
+
+  ![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/bbd4f431-1173-429c-867c-9503ad4131a2)
+
+
 
 <!-- CONTACT -->
 ## Contact
