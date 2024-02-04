@@ -51,7 +51,8 @@ This is an example of how you may give instructions on setting up your project l
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
-- Install JDK 17 (depends on your OS)
+- Install JDK 17
+  
   Follow this link if you use ubuntu: https://www.rosehosting.com/blog/how-to-install-java-17-lts-on-ubuntu-20-04/
   
 - Install eclipse (Currently I use spring tool suite 4)
