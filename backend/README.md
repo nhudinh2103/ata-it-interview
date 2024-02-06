@@ -154,6 +154,8 @@ rootUrl: http://localhost:8081
 ![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/409cedb4-75bd-4fe3-b4d6-77b4b58c00d9)
 
 ### Note:
+- This's not implemented authentication / security yet (Should use jwt for authentication).
+
 - Currently my implementation only handle issues when sort with string at these fields: salary, yearAtEmployer, yearsOfExperience.
 
 - In search query, I use | as separator for multiple search conditions
@@ -164,7 +166,7 @@ rootUrl: http://localhost:8081
 
   Example: **/job_data?sort=\<criteria1\>,\<asc/desc\>@@\<criteria2\>,\<asc/desc\>@@...\<criteriaN\>,\<asc/desc\>**
 
-- For detail search criteria operation, please look in enum com.ata.interview.backend.util.SearchOperation:
+- For detail search criteria operation, please look at enum in com.ata.interview.backend.util.SearchOperation:
 
   ![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/c6f55019-6846-4d62-a717-0e4f41436458)
 
