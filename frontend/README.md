@@ -86,11 +86,11 @@ https://www.hostinger.com/tutorials/how-to-install-node-ubuntu
 
 ## Project structure
 
-- src: Typescript code for this frontend ReactJS app.
+- `src`: Typescript code for this frontend ReactJS app.
 
-- src/css: Where your style css file.
+- `src/css`: Where your style css file.
 
-- src/test: Test code for this frontend app.
+- `src/test`: Test code for this frontend app.
 
 ![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/c3bb1cf4-1e0f-4c1a-9a7d-d85c0a84d3ad)
 
