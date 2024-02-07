@@ -72,8 +72,8 @@ To get a local copy up and running follow these simple example steps.
   
   ![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/8e2c627d-cb23-4e9d-b952-732f2794ed6f)
 
-- After build succeed, we will have jar file name **backend-1.0.0.jar** in **./backend/build/libs directory**.
-  To run application, just run the jar file with command:
+- After build succeed, we will have jar file name **backend-1.0.0.jar** in `./backend/build/libs` directory.
+  To run application, just run the jar file with these commands:
 
    ```
    cd ./backend/build/libs
@@ -85,20 +85,21 @@ To get a local copy up and running follow these simple example steps.
   ![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/179a18b9-0d6a-4667-ae91-699d48d6d4e9)
 
 
-  **Note**: in case you got error Port 8081 was already in use (due to another application had already started in port 8081)
+  **Note**: in case you got error `Port 8081 was already in use` (due to another application had already started in port 8081)
 
   ![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/ae622226-b185-4ca3-8e79-3e95056add30)
 
-  You can change default port in application in **src/main/resources/application.properties** to another port and rebuild application.
+  You can change default port in file **src/main/resources/application.properties** to another port and rebuild application.
+  
   ![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/871f62e6-798b-4d69-80dd-1ff00a471051)
 
 ## Project structure
 
-- src/main/java: Java source code for backend.
+- `src/main/java`: Java source code for backend.
 
-- src/main/resources: Configs file (like application.properties) and file contains dummy data.
+- `src/main/resources`: Configs file (like application.properties) and file which contains dummy data.
   
-- src/test/java: Test code (For simplicity, I just write two simple test cases).
+- `src/test/java`: Test code (For simplicity and iilustration purpose, I just write two simple test cases).
 
 ![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/843a84ad-4c6a-49bc-af13-287ce05b106d)
 
@@ -117,13 +118,13 @@ rootUrl: http://localhost:8081
 ![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/12731dd7-df44-4ef6-b185-bea97a18356f)
 
 
-2. Get jobs which salary greater or equal than X value with gender is Female.
+2. Get jobs which salary greater or equal than X value and gender is Female.
 
    http://localhost:8081/job_data?search=salary>=9999999999|gender:Female
 
 ![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/8e649581-e945-4c0a-977d-305522826fd8)
 
-3. Only retrieve 4 fields: gender, salary, employer, timestamp with search conditions
+3. Only retrieve 5 fields: gender, salary, employer, timestamp, timestampStr with search conditions
 
    http://localhost:8081/job_data?search=salary>=1000000000000&fields=gender,salary,timestamp,timestampStr,employer
 
@@ -154,7 +155,7 @@ rootUrl: http://localhost:8081
 ![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/409cedb4-75bd-4fe3-b4d6-77b4b58c00d9)
 
 ### Note:
-- This's not implemented authentication / security yet (Should use jwt for authentication).
+- This hasn't implemented authentication / security yet (We should use some authentication like oauth 2 with jwt token or basic authentication).
 
 - Currently my implementation only handle issues when sort with string at these fields: salary, yearAtEmployer, yearsOfExperience.
 
