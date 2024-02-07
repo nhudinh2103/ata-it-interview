@@ -48,7 +48,7 @@ https://www.hostinger.com/tutorials/how-to-install-node-ubuntu
 
 ![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/84d5a1c9-1cef-4a7f-88f2-51247839197a)
 
-- Install vscode (as we use it as IDE for code)
+- Install vscode (I use it as an IDE for coding ReactJS)
 
 - Clone source code from this repo (frontend folder).
 
@@ -60,22 +60,22 @@ https://www.hostinger.com/tutorials/how-to-install-node-ubuntu
    npm install
    ```
 
-  This image show building successfully
+  This image show the build had run successfully
   
   ![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/1a3eb41a-e944-4de8-80a1-89ef4b857516)
 
 
-- After build succeed, we can run frontend code with commands:
+- After build succeed, we can run frontend code with command:
   
    ```
    npm run dev
    ```
    
-  This will run our web front end at port 5173 (if ports was not in use).
+  This will run our web front end at port 5173 (if this port was not already in use).
 
   ![image](https://github.com/nhudinh2103/ata-it-interview/assets/17499217/9df1dcda-5dcc-4d90-a2c5-50fd86965022)
 
-- In case you want to run the test, pleae run these command:
+- In case you want to run the test, please run the command:
 
   ```
   npm test
@@ -113,7 +113,7 @@ After running frontend application successfully, you can see the web ui like thi
 rootUrl: http://localhost:5173
 
 ### Note:
-- Currently, my MVP (implementation) only support filter based on start date, end date as well as filter by accountNo.
+- Currently, my implementation only support filter based on start date, end date as well as filter by accountNo.
 
 
 <!-- CONTACT -->
